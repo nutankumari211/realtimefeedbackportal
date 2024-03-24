@@ -8,7 +8,7 @@ const authMiddleware = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, 'SECRET_KEY');
-        req.userId = decoded.userId; // Ensure userId is set here
+        req.userId = decoded.userId; 
         next();
     } catch (err) {
         res.status(401).json({ message: 'Authentication failed' });

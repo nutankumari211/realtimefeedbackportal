@@ -1,6 +1,6 @@
 import React from 'react';
 import feedbackbg from './feedbackbg.jpg';
-import { FaComments} from 'react-icons/fa'; // Importing FontAwesome icons
+import { FaComments} from 'react-icons/fa'; 
 
 const Home = () => {
   return (
@@ -26,7 +26,7 @@ const Home = () => {
         <button className="btn btn-lg btn-primary shadow-sm">Get Started</button>
       </div>
 
-      {/* How to Use Feedback Portal Steps */}
+     
       <div className="text-center py-5 px-4">
         <h2 className="mb-4 text-primary">How to Use Feedback Portal</h2>
         <div className="mb-4">

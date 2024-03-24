@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
-import './FeedbackChat.css'; // Import the CSS file for styling
+import './FeedbackChat.css'; 
 
 const socket = io('http://localhost:5000');
 
@@ -17,6 +17,24 @@ const FeedbackChat = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+const handleAdminMessage = useCallback((adminMessage) => {
+  console.log('Received new admin message:', adminMessage);
+
+  if (!feedbacks.some(fb => fb._id === adminMessage._id)) {
+      setFeedbacks(prevFeedbacks => [adminMessage, ...prevFeedbacks]);
+      setShowNewMessage(true);
+  }
+}, [feedbacks]);
+
+useEffect(() => {
+  socket.on('adminMessage', handleAdminMessage);
+
+  return () => {
+      socket.off('adminMessage', handleAdminMessage);
+  };
+}, [handleAdminMessage]);
+
 
   const handleNewFeedback = useCallback((newFeedback) => {
     console.log('Received new feedback:', newFeedback);
@@ -101,6 +119,7 @@ const FeedbackChat = () => {
     }
   };
 
+
   return (
     <div className="container1">
       <h2 className="chat-title">Feedback Portal</h2>
@@ -126,6 +145,7 @@ const FeedbackChat = () => {
           Send
         </button>
       </form>
+      
     </div>
   );
 };

@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
         res.json({
             token,
             username: user.username,
-            userId: user._id  // Sending userId in the response
+            userId: user._id  
         });
 
     } catch (err) {

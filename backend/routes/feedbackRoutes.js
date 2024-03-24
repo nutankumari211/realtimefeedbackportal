@@ -36,6 +36,20 @@ router.get('/:userId', async (req, res) => {
     }
 });
 
+router.post('/admin-message', async (req, res) => {
+    try {
+        const { userId, message } = req.body;
+        const feedback = new Feedback({ user: userId, message });
+        await feedback.save();
+
+        req.app.io.emit('adminMessage', feedback);
+
+        res.status(201).json(feedback);
+    } catch (error) {
+        console.error('Admin message submission failed:', error.response ? error.response.data : error.message);
+    }
+    
+});
 
 
 
