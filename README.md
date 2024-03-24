@@ -141,8 +141,7 @@ Successful Response:
 
 
 
-FeedbackPortal/
-│
+
 ├── backend/
 │   ├── node_modules/
 │   ├── routes/
