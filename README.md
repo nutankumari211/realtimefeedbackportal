@@ -1,6 +1,6 @@
 # Real-Time Customer Feedback Portal
 
-The Real-Time Customer Feedback Portal is a modern web application designed to facilitate seamless communication between customers and service providers. Built with cutting-edge technologies, this portal aims to enhance customer satisfaction by allowing users to submit feedback in real-time and view all feedback instantaneously. The platform employs a robust backend powered by Node.js, Express, and a flexible database solution, while the frontend is crafted using React.js or Next.js to ensure a responsive and intuitive user experience.
+The Real-Time Customer Feedback Portal is a modern web application designed to facilitate seamless communication between customers and service providers. Built with cutting-edge technologies, this portal aims to enhance customer satisfaction by allowing users to submit feedback in real-time and view all feedback instantaneously. The platform employs a robust backend powered by Node.js, Express, and a mongodb database solution, while the frontend is crafted using React.js to ensure a responsive and intuitive user experience.
 
 # SETUP
 step 1: Go to project directory
@@ -17,7 +17,7 @@ Base URL
 All API endpoints are prefixed with the following base URL: http://localhost:5000/api
 
 Authentication Endpoints
-1. Login
+# 1. Login
 Endpoint: /auth/login
 
 Method: POST
@@ -36,7 +36,7 @@ Successful Response:
   "token": "JWT_TOKEN_HERE",
   "userId": "65ffe29bd12e9050357f1a58"
 }
-2. Register
+# 2. Register
 Endpoint: /auth/register
 
 Method: POST
@@ -55,7 +55,7 @@ Successful Response:
   "message": "User registered successfully"
 }
 Feedback Endpoints
-1. Submit Feedback
+# 3. Submit Feedback
 Endpoint: /feedback/submit
 
 Method: POST
@@ -74,7 +74,7 @@ Successful Response:
   "message": "User feedback message",
   "createdAt": "timestamp_here"
 }
-2. Get All Feedback
+# 4. Get All Feedback
 Endpoint: /feedback/all
 
 Method: GET
@@ -96,7 +96,7 @@ Successful Response:
     "createdAt": "timestamp_2"
   }
 ]
-3. Get Feedback by User ID
+# 5. Get Feedback by User ID
 Endpoint: /feedback/:userId
 
 Method: GET
@@ -115,7 +115,7 @@ Successful Response:
     "createdAt": "timestamp_1"
   }
 ]
-4. Send Admin Message
+# 6. Send Admin Message
 Endpoint: /feedback/admin-message
 
 Method: POST
@@ -125,7 +125,7 @@ Purpose: Allow admins to send messages to specific users.
 Request Body:
 
 {
-  "user": "65ffe29bd12e9050357f1a58",
+  "user": "65ffe29bd12e9050357f1a58",     //user id of user to whom we want to send message
   "message": "Your admin message"
 }
 Successful Response:
